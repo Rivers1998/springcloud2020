@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * @auther River
  * @date 2020/7/30 15:13
  */
-@Mapper //推荐使用mybatis的mapper注解来标注持久层接口
+@Mapper // 推荐使用mybatis的mapper注解来标注持久层接口
 public interface PaymentDao {
 
     Integer create(Payment payment); // 插入操作
