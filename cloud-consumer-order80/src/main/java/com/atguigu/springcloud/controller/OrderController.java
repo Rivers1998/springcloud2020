@@ -40,7 +40,7 @@ public class OrderController {
         if (entity.getStatusCode().is2xxSuccessful()){ // 2xx表示http请求的状态响应码
             return entity.getBody(); // 返回一个请求体内容
         }else {
-            return new CommonResult<>(500,"请求失败",null);
+            return new CommonResult<Payment>(500,"请求失败",null);
         }
     }
 }

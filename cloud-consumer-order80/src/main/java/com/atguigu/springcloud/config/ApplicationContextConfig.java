@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApplicationContextConfig {
 
     @Bean
-    @LoadBalanced // 设置消费服务提供者集群时的一种负载均衡的方式
+    @LoadBalanced // 设置消费服务提供者集群时的一种负载均衡的方式,为轮询
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
