@@ -65,5 +65,11 @@ public class PaymentController {
         }
         return this.discoveryClient;
     }
+
+    // 调用时获取端口，检验自定义robbin负载均衡算法调用情况
+    @GetMapping("/payment/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
 }
 
