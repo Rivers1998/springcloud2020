@@ -30,11 +30,15 @@ public class PaymentController {
     @Autowired
     private DiscoveryClient discoveryClient; // 在eureka上注册的所有服务详细信息类
 
+    /**
+     * 插入操作
+     * @param payment
+     * @return
+     */
     @PostMapping("/payment/create")
     public CommonResult create(@RequestBody Payment payment){ // 该注解将前端的json字符串与对象对应，用对象来接受值
         Integer result = paymentService.create(payment);
         log.info("****插入成功,为："+result+"****");
-
         if (result > 0){
             return new CommonResult(200,"插入成功,server_port:"+serverPort,result);
         }else {
@@ -42,11 +46,15 @@ public class PaymentController {
         }
     }
 
+    /**
+     * 查询操作
+     * @param id
+     * @return
+     */
     @GetMapping("/payment/getPaymentById/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id){
         Payment payment = paymentService.getPaymentById(id);
         log.info("****查询成功,为："+payment+"****");
-
         if (payment != null){
             return new CommonResult(200,"查询成功,server_port:"+serverPort,payment);
         }else {
@@ -54,6 +62,10 @@ public class PaymentController {
         }
     }
 
+    /**
+     * 查询服务
+     * @return
+     */
     @GetMapping("/payment/discovery")
     public Object getDiscovery(){
         List<String> services = discoveryClient.getServices(); // 获取所有在eureka上注册的服务名称
@@ -67,9 +79,26 @@ public class PaymentController {
         return this.discoveryClient;
     }
 
-    // 调用时获取端口，检验自定义robbin负载均衡算法调用情况
+    /**
+     * 调用时获取端口，检验自定义robbin负载均衡算法调用情况
+     * @return
+     */
     @GetMapping("/payment/lb")
     public String getPaymentLB(){
         return serverPort;
+    }
+
+    /**
+     * 模拟复杂业务调用花较长时间
+     * @return
+     */
+    @GetMapping("/payment/feign/timeout")
+    public String paymentFeignTimeout(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort; // 随意返回一个数据
     }
 }
