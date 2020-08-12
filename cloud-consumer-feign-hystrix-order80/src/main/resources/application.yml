@@ -9,14 +9,4 @@ eureka:
 
 feign:
   hystrix:
-    enabled: true # 开启客户端的hystrix
-#  client:
-#    config:
-#      springApplicationName:
-#        connectTimeout: 5000
-#        readTimeout: 5000
-
-ribbon: # 设置openFeign客户单超时时间
-  ReadTimeout: 5000 # 建立网络连接所用时间，使用与网络状况正常的情况下两端连接所需时间
-  ConnectTimeout: 5000 # 指的是建立连接后从服务器读到可用资源所需时间
-
+    enabled: true # 客户端开启hystrix

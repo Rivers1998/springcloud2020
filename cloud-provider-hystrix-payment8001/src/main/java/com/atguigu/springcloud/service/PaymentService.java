@@ -27,12 +27,12 @@ public class PaymentService {
      * @return
      */
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeoutHandler", // hystrix服务降级注解，当调用该方法失败时会调用指定的方法
-    commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5000")
+    commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
     }) // 指定服务调用的超时时间
     public String paymentInfo_Timeout(Integer id){
         // int a = 10 / 0;  服务异常和服务超时都可以达到降级的效果
         try {
-            Thread.sleep(500);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
