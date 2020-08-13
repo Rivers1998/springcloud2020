@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2020/8/12 10:35
  */
 @Component
-@FeignClient("CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT",fallback = PaymentFallbackService.class)
 public interface PaymentHystrixService {
 
     /**
