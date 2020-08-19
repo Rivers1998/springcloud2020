@@ -8,9 +8,9 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com/Rivers1998/springcloud-config.git # github上git仓库的名字
+          uri: https://github.com/Rivers1998/springcloud-config.git # github上git仓库的名字
           search-paths:
-            - spring-cloud-config # 搜索目录
+            - springcloud-config # 搜索目录
       label: master # 读取分支
 
 eureka:
