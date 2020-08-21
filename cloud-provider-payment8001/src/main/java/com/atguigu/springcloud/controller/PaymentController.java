@@ -101,4 +101,14 @@ public class PaymentController {
         }
         return serverPort; // 随意返回一个数据
     }
+
+    /**
+     * 测试zipkin
+     * @return
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+
+        return "Welcome to use Zipkin~";
+    }
 }
