@@ -81,6 +81,16 @@ public class OrderController {
             return null;
         }
         ServiceInstance serviceInstance = loadBalancer.instances(instances); // 经过负载均衡算法后得到的微服务提供者
-        return restTemplate.getForObject(serviceInstance.getUri() + "/payment/lb",String.class);
+        return restTemplate.getForObject(serviceInstance.getUri() + "/payment/lb", String.class);
+    }
+
+    /**
+     * 测试zipkin
+     * @return
+     */
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin(){
+
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin", String.class);
     }
 }

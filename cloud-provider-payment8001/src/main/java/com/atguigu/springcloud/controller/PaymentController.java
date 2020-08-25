@@ -111,4 +111,13 @@ public class PaymentController {
 
         return "Welcome to use Zipkin~";
     }
+
+    /**
+     * 测试使用get请求传递一个对象
+     */
+    @GetMapping("/payment/getObject/{id_error}/{serial}/{redundant}")
+    public String paymentGetObject(Payment payment){
+        log.info("--------------"+payment+"--------------");
+        return "yes";
+    }
 }
