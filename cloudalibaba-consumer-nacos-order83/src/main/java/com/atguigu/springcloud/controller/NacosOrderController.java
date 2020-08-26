@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+
 /**
  * @auther River
  * @date 2020/8/25 17:43
@@ -19,7 +20,7 @@ public class NacosOrderController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${server-url.nacos-user-service}")
+    @Value("${service-url.nacos-user-service}")
     private String serverURL;
 
     @GetMapping("/consumer/payment/getPayment/{id}")
